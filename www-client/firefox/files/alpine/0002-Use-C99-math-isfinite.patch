@@ -1,0 +1,15 @@
+diff -urN old/xpcom/ds/nsMathUtils.h new/xpcom/ds/nsMathUtils.h
+--- old/xpcom/ds/nsMathUtils.h	2018-06-10 23:17:15.871401257 -0000
++++ new/xpcom/ds/nsMathUtils.h	2018-06-10 23:19:25.911403663 -0000
+@@ -103,8 +103,10 @@
+ #ifdef WIN32
+   // NOTE: '!!' casts an int to bool without spamming MSVC warning C4800.
+   return !!_finite(aNum);
+-#else
++#elif defined(XP_DARWIN) || defined(_GLIBCXX_CMATH)
+   return std::isfinite(aNum);
++#else
++  return isfinite(aNum);
+ #endif
+ }
+ 

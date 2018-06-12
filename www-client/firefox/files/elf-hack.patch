@@ -1,0 +1,12 @@
+diff -urN old/toolkit/moz.configure new/toolkit/moz.configure
+--- old/toolkit/moz.configure	2018-06-10 23:31:57.061417562 -0000
++++ new/toolkit/moz.configure	2018-06-10 23:32:25.501418088 -0000
+@@ -1210,7 +1210,7 @@
+ @depends(host, target)
+ def has_elfhack(host, target):
+     return target.kernel == 'Linux' and host.kernel == 'Linux' and \
+-           target.cpu in ('arm', 'x86', 'x86_64')
++           target.cpu in ('arm', 'aarch64', 'x86', 'x86_64')
+ 
+ with only_when(has_elfhack):
+     option('--disable-elf-hack', help='Disable elf hacks')
